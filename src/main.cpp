@@ -1,4 +1,4 @@
-/* 
+/*
 Developer: Chunran Zheng <zhengcr@connect.hku.hk>
 
 This file is subject to the terms and conditions outlined in the 'LICENSE' file,
@@ -9,7 +9,7 @@ which is included as part of this source code package.
 #include "lidar_detect.hpp"
 #include "data_preprocess.hpp"
 
-int main(int argc, char **argv) 
+int main(int argc, char **argv)
 {
     ros::init(argc, argv, "mono_qr_pattern");
     ros::NodeHandle nh;
@@ -30,7 +30,7 @@ int main(int argc, char **argv)
     // 读取图像和点云
     cv::Mat img_input = dataPreprocessPtr->img_input_;
     pcl::PointCloud<Common::Point>::Ptr cloud_input = dataPreprocessPtr->cloud_input_;
-    
+
     // 检测 QR 码
     PointCloud<PointXYZ>::Ptr qr_center_cloud(new PointCloud<PointXYZ>);
     qr_center_cloud->reserve(4);
@@ -39,7 +39,7 @@ int main(int argc, char **argv)
     // 检测 LiDAR 数据
     PointCloud<PointXYZ>::Ptr lidar_center_cloud(new PointCloud<PointXYZ>);
     lidar_center_cloud->reserve(4);
-    
+
     switch (dataPreprocessPtr->lidar_type_)
     {
         case LiDARType::Solid:
@@ -51,8 +51,8 @@ int main(int argc, char **argv)
             break;
 
         default:
-            std::cerr << BOLDYELLOW 
-                    << "[Main] Unknown LiDAR type." 
+            std::cerr << BOLDYELLOW
+                    << "[Main] Unknown LiDAR type."
                     << RESET << std::endl;
             break;
     }
@@ -75,9 +75,9 @@ int main(int argc, char **argv)
     pcl::PointCloud<pcl::PointXYZ>::Ptr aligned_lidar_centers(new pcl::PointCloud<pcl::PointXYZ>);
     aligned_lidar_centers->reserve(lidar_centers->size());
     alignPointCloud(lidar_centers, aligned_lidar_centers, transformation);
-    
+
     double rmse = computeRMSE(qr_centers, aligned_lidar_centers);
-    if (rmse > 0) 
+    if (rmse > 0)
     {
       std::cout << BOLDYELLOW << "[Result] RMSE: " << BOLDRED << std::fixed << std::setprecision(4)
       << rmse << " m" << RESET << std::endl;
@@ -96,9 +96,9 @@ int main(int argc, char **argv)
 
     // 主循环
     ros::Rate rate(1);
-    while (ros::ok()) 
+    while (ros::ok())
     {
-      if (DEBUG) 
+      if (DEBUG)
       {
         // 发布 QR 检测结果
         sensor_msgs::PointCloud2 qr_centers_msg;

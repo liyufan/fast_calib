@@ -1,4 +1,4 @@
-# Camera intrinsics  
+# Camera intrinsics
   # mid360
   # fx: 843.501050605967
   # fy: 845.199690011973
@@ -41,11 +41,11 @@
 
 # Calibration target parameters
   marker_size: 0.20 # ArUco marker size (our test data uses 0.16m; adjust to match your marker size)
-  delta_width_qr_center: 0.55 # Half the distance between the centers of two markers in the horizontal direction 
+  delta_width_qr_center: 0.55 # Half the distance between the centers of two markers in the horizontal direction
   delta_height_qr_center: 0.35 # Half the distance between the centers of two markers in the vertical direction
   delta_width_circles: 0.5 # Distance between the centers of two circles in the horizontal direction
   delta_height_circles: 0.4 # Distance between the centers of two circles in the vertical direction
-  circle_radius: 0.12 # Radius of the circle 
+  circle_radius: 0.12 # Radius of the circle
 
 # Distance filter
   # x_min: 3.0 # avia and mid360: 2.0 ouster: 1.5

@@ -2,9 +2,9 @@
 
 ## FAST-Calib: LiDAR-Camera Extrinsic Calibration in One Second
 
-FAST-Calib is an efficient target-based extrinsic calibration tool for LiDAR-camera systems (eg., [FAST-LIVO2](https://github.com/hku-mars/FAST-LIVO2)). 
+FAST-Calib is an efficient target-based extrinsic calibration tool for LiDAR-camera systems (eg., [FAST-LIVO2](https://github.com/hku-mars/FAST-LIVO2)).
 
-**Key highlights include:** 
+**Key highlights include:**
 
 1. Support solid-state and mechanical LiDAR.
 2. No need for any initial extrinsic parameters.
@@ -12,7 +12,7 @@ FAST-Calib is an efficient target-based extrinsic calibration tool for LiDAR-cam
 
 In short, it makes extrinsic calibration as simple as intrinsic calibration.
 
-**Related paper:** 
+**Related paper:**
 
 [FAST-Calib: LiDAR-Camera Extrinsic Calibration in One Second](https://www.arxiv.org/pdf/2507.17210)
 
@@ -54,6 +54,8 @@ roslaunch fast_calib multi_calib.launch
 5. Calibrate now!
 
 💡 **Note:** You can run `scripts/distance_filter_tool.py` to quickly obtain suitable filter parameters.
+
+⚠️ **Note:** The most common case is that the camera z aligns with the LiDAR x. If your camera z aligns with the LiDAR -x, ±y or ±z, you need to modify the `sortPatternCenters` function in `common_lib.h` accordingly, then rebuild the project.
 <p align="center">
   <img src="./pics/calibration_target.jpg" width="100%">
   <font color=#a0a0a0 size=2>Left: Actual calibration target | Right: Technical drawing with annotated dimensions.</font>
